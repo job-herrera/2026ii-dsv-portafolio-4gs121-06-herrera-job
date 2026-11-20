@@ -1,39 +1,19 @@
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="utf-8">
-    <!-- file: docs/index.html -->
-    <!--
-      PÁGINA PERSONAL — portada del portafolio
-      ──────────────────────────────────────────────────────────────
-      Si ya hiciste tu perfil en el Laboratorio 1, trae aquí su
-      contenido. Las rutas de esta página ya están ajustadas al
-      portafolio; no copies las del laboratorio, que usaban ../../
-
-      Qué editar:
-        • El <title>, el <link> a tu hoja de estilos y la descripción.
-        • Nombre, tagline y todos los marcadores con la forma {{TEXTO}}.
-        • Las cuatro rutas de la fotografía (src y srcset).
-      Qué NO cambiar:
-        • Estructura (header / aside / main / footer).
-        • El enlace "Mis entregas" (./modulos/index.html).
-        • Rutas a los logos institucionales (./assets/img/).
-
-      Nombres de archivo, si te llamas Juan Pérez:
-        assets/css/about-perez-juan.css
-        assets/img/foto-perez-juan-{160,320,480,640}.webp
-      Borra este comentario cuando termines.
-    -->
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Nombre Apellidos — Perfil</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Job Herrera — Perfil</title>
 
     <!-- CSS específico de esta página -->
-    <link rel="stylesheet" href="./assets/css/about-apellidos-nombre.css">
+    <link rel="stylesheet" href="./assets/css/about-herrera-job.css" />
 
     <!-- Descripción breve (práctica de metadatos/SEO) -->
     <meta
       name="description"
-      content="Perfil de estudiante — Licenciatura en Desarrollo y Gestión de Software (UTP FISC Veraguas)">
+      content="Perfil de estudiante — Licenciatura en Desarrollo y Gestión de Software (UTP FISC Veraguas)"
+    />
   </head>
   <body>
     <!-- Contenedor principal (layout en Grid definido en el CSS) -->
@@ -43,16 +23,16 @@
           <!-- Navegación mínima (breadcrumb). Puedes añadir más tabs si el profe lo pide -->
           <div class="top-actions">
             <nav class="tabs-left" aria-label="Navegación">
-              <a href="./modulos/index.html" class="tab-link is-active">
+              <a href="../../index.html" class="tab-link is-active">
                 <span class="ico" aria-hidden="true">&#8962;</span>
-                <span class="label">Mis entregas</span>
+                <span class="label">Mis Entregas</span>
               </a>
             </nav>
           </div>
 
           <!-- EDITA: nombre y tagline -->
-          <h1 class="nombre">Nombre Apellidos</h1>
-          <p class="tagline">Estudiante de Desarrollo de Software · {{GRUPO}}-{{NN}}</p>
+          <h1 class="nombre">Job Herrera</h1>
+          <p class="tagline">Estudiante de Licenciatura en Desarrollo y Gestión de Software</p>
         </div>
 
         <!-- Logos institucionales (no cambiar rutas) -->
@@ -60,11 +40,13 @@
           <img
             class="logo"
             src="./assets/img/logo-utp.svg"
-            alt="Logo UTP">
+            alt="Logo UTP"
+          />
           <img
             class="logo"
             src="./assets/img/logo-fisc.svg"
-            alt="Logo FISC">
+            alt="Logo FISC"
+          />
         </div>
       </header>
 
@@ -72,19 +54,20 @@
       <aside class="sidebar">
         <figure class="perfil">
           <img
-            src="./assets/img/foto-apellidos-nombre-480.webp"
+            src="./assets/img/foto-herrera-job-480.webp"
             srcset="
-              ./assets/img/foto-apellidos-nombre-160.webp 160w,
-              ./assets/img/foto-apellidos-nombre-320.webp 320w,
-              ./assets/img/foto-apellidos-nombre-480.webp 480w,
-              ./assets/img/foto-apellidos-nombre-640.webp 640w
+              ./assets/img/foto-herrera-job-160.webp 160w,
+              ./assets/img/foto-herrera-job-320.webp 320w,
+              ./assets/img/foto-herrera-job-480.webp 480w,
+              ./assets/img/foto-herrera-job-640.webp 640w
             "
             sizes="(max-width: 700px) 128px, 160px"
-            alt="Nombre Apellidos, estudiante de LDGS UTP FISC Veraguas"
+            alt="Job Herrera, estudiante de LDGS UTP FISC Veraguas"
             width="160"
             height="160"
             loading="lazy"
-            decoding="async">
+            decoding="async"
+          />
           <figcaption>
             Licenciatura en Desarrollo y Gestión de Software
           </figcaption>
@@ -94,17 +77,15 @@
           <h2>Contacto</h2>
           <ul class="lista-contacto">
             <li>
-              <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>
+              <a href="mailto:jobherrera1704@gmail.com">jobherrera1704@gmail.com</a>
             </li>
             <li>
-              <a target="_blank" rel="noopener noreferrer" href="{{LINKEDIN}}">LinkedIn</a>
+              <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/job-herrera-1774613b7/">LinkedIn</a>
             </li>
             <li>
-              <a target="_blank" rel="noopener noreferrer" href="{{GITHUB}}">GitHub</a>
+              <a target="_blank" rel="noopener" href="https://github.com/job-herrera">GitHub</a>
             </li>
-            <li>
-              <a href="./modulos/index.html">Mis entregas del curso</a>
-            </li>
+         
           </ul>
         </section>
 
@@ -116,14 +97,14 @@
           <div class="chips">
             <span class="chip">Java</span>
             <span class="chip">JavaScript</span>
-            <span class="chip">Python</span>
+            <span class="chip">C++</span>
             <span class="chip">SQL</span>
           </div>
 
           <h3>Frameworks & Librerías</h3>
           <div class="chips">
-            <span class="chip">Spring Boot</span>
-            <span class="chip">React</span>
+            <span class="chip">Bootstrap</span>
+            <span class="chip">.NET Windows Forms</span>
             <span class="chip">Node.js</span>
           </div>
 
@@ -136,15 +117,12 @@
           <h3>Herramientas</h3>
           <div class="chips">
             <span class="chip">Git</span>
-            <span class="chip">Docker</span>
-            <span class="chip">Postman</span>
             <span class="chip">Figma</span>
           </div>
 
           <h3>Metodologías</h3>
           <div class="chips">
             <span class="chip">Scrum</span>
-            <span class="chip">Kanban</span>
           </div>
         </section>
       </aside>
@@ -153,7 +131,7 @@
       <main class="contenido">
         <section class="resumen card">
           <h2>Acerca de mí</h2>
-          <p>{{RESUMEN_BREVE_ELEVATOR_PITCH}}</p>
+          <p>Estudiante de segundo año de la Licenciatura en Desarrollo y Gestión de Software en la UTP, Centro Regional de Veraguas. Me interesa el desarrollo de software y el trabajo en equipo. Practico control de versiones con Git y GitHub, modelado con UML y desarrollo de aplicaciones en C,JAVA y otros</p>
         </section>
 
         <!-- Duplica <article.proyecto> por cada proyecto -->
@@ -162,38 +140,24 @@
           <div class="proyectos-flex">
             <article class="proyecto">
               <header class="proyecto-head">
-                <h3>{{NOMBRE_PROYECTO}}</h3>
-                <div class="proyecto-links">
-                  <a target="_blank" rel="noopener noreferrer" href="{{URL_GITHUB}}">Código</a>
-                  <a target="_blank" rel="noopener noreferrer" href="{{URL_DEMO}}">Demo</a>
-                </div>
+                <h3>Portafolio colaborativo</h3>
+                
               </header>
-              <p>{{DESCRIPCION_PROYECTO}}</p>
-              <p class="rol"><strong>Rol:</strong> {{ROL}}</p>
-              <p class="tech"><strong>Tecnologías:</strong> {{TECNOLOGIAS}}</p>
+              <p>Página de perfil personal integrada a un portafolio compartido, trabajando con ramas, commits, Pull Requests y resolución de conflictos de fusión</p>
+              <p class="rol"><strong>Rol:</strong> Desarrollador de mi página de perfil y revisor de un compañero</p>
+              <p class="tech"><strong>Tecnologías:</strong> HTML, CSS, Git y GitHub</p>
             </article>
           </div>
         </section>
 
-        <section class="experiencia card">
-          <h2>Experiencia</h2>
-          <ul class="timeline">
-            <li>
-              <div class="item">
-                <h3>{{CARGO}} — {{ORGANIZACION}}</h3>
-                <span class="meta">{{FECHA}}</span>
-                <p>{{RESPONSABILIDADES_LOGROS}}</p>
-              </div>
-            </li>
-          </ul>
-        </section>
+       
 
         <section class="educacion card">
           <h2>Educación</h2>
           <ul class="listado-simple">
             <li>
               <strong>Licenciatura en Desarrollo y Gestión de Software</strong>
-              — UTP, Centro Regional de Veraguas ({{ANIO_INICIO}}–{{ANIO_FIN}})
+              — UTP, Centro Regional de Veraguas (2025-2028)
             </li>
           </ul>
         </section>
@@ -201,15 +165,20 @@
         <section class="certificaciones card">
           <h2>Certificaciones y Cursos</h2>
           <ul class="listado-simple">
-            <li>{{CERTIFICACION_1}}</li>
-            <li>{{CURSO_1}}</li>
+      
+            <li>Desarrollo de Software I</li>
+<li>Desarrollo de Software II</li>
+<li>Desarrollo de Software III</li>
           </ul>
         </section>
 
         <section class="extra card">
           <h2>Logros · Artículos · Intereses</h2>
           <ul class="listado-simple">
-            <li>{{LOGRO_O_ARTICULO}}</li>
+            <li>Elaboración de la propuesta "Aprende Sin Límites" para el hackathon Hack4Edu (ProFuturo): plataforma educativa con tutor inteligente basada en IA y automatización, orientada a mejorar la educación en Panamá</li>
+<li>Elaboración de una propuesta de proyecto final en equipo (TeamForge), con arquitectura por capas, metodología Scrum y cronograma de 16 semanas</li>
+<li>Trabajo colaborativo con Git y GitHub: ramas, Pull Requests y resolución de conflictos de fusión</li>
+<li>Participación en la HackathonCopaAirlines 2026</li>
           </ul>
         </section>
       </main>
