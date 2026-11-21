@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<!-- =====================================================================
-     Informe de revisión de ConSentidos
-     Práctica 5 · Secciones 2.10 y 2.11 de la Unidad 2.
-     Archivo base: completa las partes marcadas con comentarios y pon la
-     fecha real de tu revisión en los dos elementos time.
-     ===================================================================== -->
 <html lang="es">
 
 <head>
@@ -22,7 +16,7 @@
                    form-action 'self'">
   <meta name="description"
     content="Informe de revisión de seguridad y calidad del sitio de la Clínica Veterinaria ConSentidos.">
-  <meta name="author" content="Nombre Apellido">
+  <meta name="author" content="Job Herrera">
   <title>Informe de revisión | Clínica Veterinaria ConSentidos</title>
   <link rel="icon" href="assets/img/logo-consentidos.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/consentidos.css">
@@ -39,10 +33,9 @@
       <p>Seguridad y calidad del sitio</p>
     </hgroup>
 
-    <!-- Tus datos: siempre arriba, nunca en el pie -->
     <p>
-      Nombre Apellido<br>
-      4GS121-01
+      Job Herrera<br>
+      4GS121-06
     </p>
   </header>
 
@@ -62,19 +55,21 @@
 
     <p>
       Revisión del sitio completo, hecha el
-      <time datetime="2026-11-06">6 de noviembre de 2026</time>. Se
+      <time datetime="2026-11-21">21 de noviembre de 2026</time>. Se
       comprobaron las seis páginas publicadas y este informe.
     </p>
 
-    <!-- =================================================================
-         1. LA POLÍTICA DE SEGURIDAD DE CONTENIDOS
-         ================================================================= -->
     <section id="csp">
       <h2>Política de seguridad de contenidos</h2>
 
       <p>
-        <!-- Explica en dos o tres líneas cómo construiste tu política -->
-        Escribe aquí cómo construiste la política.
+        Empecé con la política más estricta, <code>default-src 'self'</code>,
+        y recargué la página con la consola abierta. El navegador bloqueó la
+        tipografía de Google Fonts y el mapa de OpenStreetMap, que el sitio sí
+        necesita. Fui abriendo cada directiva solo cuando la consola mostró un
+        recurso legítimo bloqueado, y añadí el origen exacto y nada más. La
+        misma política está en el <code>head</code> de todas las páginas, antes
+        de la hoja de estilos.
       </p>
 
       <div tabindex="0" role="region" aria-labelledby="cap-csp">
@@ -93,20 +88,65 @@
               <td><code>'self'</code></td>
               <td>Regla por defecto: solo recursos del propio sitio.</td>
             </tr>
-            <!-- Una fila por cada directiva que añadas a tu política -->
+            <tr>
+              <th scope="row"><code>script-src</code></th>
+              <td><code>'self'</code></td>
+              <td>Los dos scripts del sitio son archivos propios. No se permite código en línea.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>style-src</code></th>
+              <td><code>'self'</code> <code>https://fonts.googleapis.com</code></td>
+              <td>La hoja de estilos importa la tipografía desde Google Fonts.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>font-src</code></th>
+              <td><code>https://fonts.gstatic.com</code></td>
+              <td>Es el servidor desde el que Google entrega los archivos de la fuente.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>img-src</code></th>
+              <td><code>'self'</code></td>
+              <td>Las imágenes están en <code>assets/</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>media-src</code></th>
+              <td><code>'self'</code></td>
+              <td>El audio y el video están en <code>assets/</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>object-src</code></th>
+              <td><code>'self'</code></td>
+              <td>El PDF incrustado con <code>object</code> está en <code>assets/</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>frame-src</code></th>
+              <td><code>'self'</code> <code>https://www.openstreetmap.org</code></td>
+              <td>Permite la página propia incrustada y el mapa de OpenStreetMap.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>base-uri</code></th>
+              <td><code>'self'</code></td>
+              <td>Impide que alguien cambie la base de las rutas con una etiqueta <code>base</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>form-action</code></th>
+              <td><code>'self'</code></td>
+              <td>El formulario solo puede enviarse al propio sitio.</td>
+            </tr>
           </tbody>
         </table>
       </div>
 
       <p>
-        <!-- Explica por qué frame-ancestors no está activa en tu sitio -->
-        Escribe aquí qué pasa con <code>frame-ancestors</code> en tu sitio.
+        La directiva <code>frame-ancestors</code>, que decide qué sitios pueden
+        incrustar mi página en un <code>iframe</code>, no funciona dentro de una
+        etiqueta <code>meta</code>: solo vale como cabecera HTTP que configura
+        el servidor. GitHub Pages no permite configurar cabeceras, así que en
+        mi sitio esa protección contra el <em>clickjacking</em> no está activa.
+        Saber qué protección no tengo es parte de la revisión.
       </p>
     </section>
 
-    <!-- =================================================================
-         2. LA LISTA DE VERIFICACIÓN DE LA SECCIÓN 2.11.4
-         ================================================================= -->
     <section id="verificacion">
       <h2>Lista de verificación</h2>
 
@@ -133,8 +173,9 @@
             </tr>
             <tr>
               <th scope="row"><code>alt</code> en las imágenes y <code>title</code> en los <code>iframe</code></th>
-              <td>Pendiente</td>
-              <td></td>
+              <td>Cumple</td>
+              <td>En la guía de componentes, las imágenes llevan <code>alt</code> y los dos <code>iframe</code> llevan
+                <code>title</code>.</td>
             </tr>
             <tr>
               <th scope="row">Cada control con <code>label</code> y <code>name</code></th>
@@ -143,13 +184,13 @@
             </tr>
             <tr>
               <th scope="row">Tablas con <code>caption</code> y <code>scope</code></th>
-              <td>Pendiente</td>
-              <td></td>
+              <td>Cumple</td>
+              <td>Las dos tablas de este informe llevan <code>caption</code> y <code>scope</code>.</td>
             </tr>
             <tr>
               <th scope="row">Enlaces a otra pestaña con <code>rel="noopener noreferrer"</code></th>
-              <td>Pendiente</td>
-              <td></td>
+              <td>Cumple</td>
+              <td>El enlace externo de la guía de componentes lleva <code>rel="noopener noreferrer"</code>.</td>
             </tr>
             <tr>
               <th scope="row">Recorrido completo con el teclado y foco visible</th>
@@ -163,28 +204,34 @@
             </tr>
             <tr>
               <th scope="row">Consola sin errores de la política</th>
-              <td>Pendiente</td>
-              <td></td>
+              <td>Cumple</td>
+              <td>En la página publicada la consola no muestra ningún recurso bloqueado. El aviso de Live Server solo
+                aparece en local.</td>
             </tr>
             <tr>
               <th scope="row">Accesibilidad en Lighthouse</th>
-              <td>Pendiente</td>
-              <td></td>
+              <td>Cumple</td>
+              <td>La guía de componentes obtuvo 100. Subió al ponerle <code>aria-label</code> al <code>object</code> del
+                PDF.</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- =================================================================
-         3. LA DEMOSTRACIÓN DEL REQUIRED
-         ================================================================= -->
     <section id="validacion-cliente">
       <h2>La validación del navegador no protege</h2>
 
       <p>
-        <!-- Describe lo que hiciste en el paso 2 y qué concluyes -->
-        Escribe aquí el resultado de la demostración y tu conclusión.
+        En el formulario de cita, con el correo vacío, el navegador no me dejó
+        enviarlo. Después abrí las herramientas de desarrollo, borré el atributo
+        <code>required</code> del campo del correo y lo envié: el formulario
+        salió sin ese dato. Hice lo mismo con el campo <code>hidden</code>,
+        cambié su <code>value</code> y viajó el valor alterado. Concluyo que
+        <code>required</code>, <code>pattern</code>, <code>min</code> y
+        <code>type="email"</code> ayudan a quien llena el formulario, pero no
+        impiden nada a quien quiere enviar otra cosa. La validación que protege
+        los datos se hace en el servidor.
       </p>
     </section>
 
@@ -200,7 +247,7 @@
 
     <p>
       Última actualización:
-      <time datetime="2026-11-06">6 de noviembre de 2026</time>.
+      <time datetime="2026-11-21">21 de noviembre de 2026</time>.
     </p>
 
     <p><a href="#inicio">Volver arriba</a></p>
