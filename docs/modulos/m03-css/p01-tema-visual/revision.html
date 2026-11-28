@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self';
+                   script-src 'self';
+                   style-src 'self' https://fonts.googleapis.com;
+                   font-src 'self' https://fonts.gstatic.com;
+                   img-src 'self';
+                   media-src 'self';
+                   object-src 'self';
+                   frame-src 'self' https://www.openstreetmap.org;
+                   base-uri 'self';
+                   form-action 'self'">
+  <meta name="description"
+    content="Informe de revisión de seguridad y calidad del sitio de la Clínica Veterinaria ConSentidos.">
+  <meta name="author" content="Job Herrera">
+  <title>Informe de revisión | Clínica Veterinaria ConSentidos</title>
+  <link rel="icon" href="assets/img/logo-consentidos.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/consentidos.css">
+  <!-- Tema visual (Módulo III, Práctica 1): va DESPUÉS de la hoja del sitio -->
+  <link rel="stylesheet" href="assets/css/tema.css">
+</head>
+
+<body>
+  <a href="#contenido">Saltar al contenido</a>
+
+  <header id="inicio">
+    <img src="assets/img/logo-consentidos.svg" alt="" width="64" height="64">
+
+    <hgroup>
+      <h1>Informe de revisión</h1>
+      <p>Seguridad y calidad del sitio</p>
+    </hgroup>
+
+    <p>
+      Job Herrera<br>
+      4GS121-06
+    </p>
+  </header>
+
+  <nav aria-label="Navegación del sitio">
+    <h2>El sitio</h2>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="componentes.html">Guía de componentes</a></li>
+      <li><a href="tarifas.html">Tarifas</a></li>
+      <li><a href="cita.html">Solicitar cita</a></li>
+      <li><a href="paginas/test.html">Página de prueba</a></li>
+    </ul>
+  </nav>
+
+  <main id="contenido">
+
+    <p>
+      Revisión del sitio completo, hecha el
+      <time datetime="2026-11-21">21 de noviembre de 2026</time>. Se
+      comprobaron las seis páginas publicadas y este informe.
+    </p>
+
+    <section id="csp">
+      <h2>Política de seguridad de contenidos</h2>
+
+      <p>
+        Empecé con la política más estricta, <code>default-src 'self'</code>,
+        y recargué la página con la consola abierta. El navegador bloqueó la
+        tipografía de Google Fonts y el mapa de OpenStreetMap, que el sitio sí
+        necesita. Fui abriendo cada directiva solo cuando la consola mostró un
+        recurso legítimo bloqueado, y añadí el origen exacto y nada más. La
+        misma política está en el <code>head</code> de todas las páginas, antes
+        de la hoja de estilos.
+      </p>
+
+      <div tabindex="0" role="region" aria-labelledby="cap-csp">
+        <table>
+          <caption id="cap-csp">Directivas de la política y por qué están</caption>
+          <thead>
+            <tr>
+              <th scope="col">Directiva</th>
+              <th scope="col">Valor</th>
+              <th scope="col">Por qué</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><code>default-src</code></th>
+              <td><code>'self'</code></td>
+              <td>Regla por defecto: solo recursos del propio sitio.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>script-src</code></th>
+              <td><code>'self'</code></td>
+              <td>Los dos scripts del sitio son archivos propios. No se permite código en línea.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>style-src</code></th>
+              <td><code>'self'</code> <code>https://fonts.googleapis.com</code></td>
+              <td>La hoja de estilos importa la tipografía desde Google Fonts.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>font-src</code></th>
+              <td><code>https://fonts.gstatic.com</code></td>
+              <td>Es el servidor desde el que Google entrega los archivos de la fuente.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>img-src</code></th>
+              <td><code>'self'</code></td>
+              <td>Las imágenes están en <code>assets/</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>media-src</code></th>
+              <td><code>'self'</code></td>
+              <td>El audio y el video están en <code>assets/</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>object-src</code></th>
+              <td><code>'self'</code></td>
+              <td>El PDF incrustado con <code>object</code> está en <code>assets/</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>frame-src</code></th>
+              <td><code>'self'</code> <code>https://www.openstreetmap.org</code></td>
+              <td>Permite la página propia incrustada y el mapa de OpenStreetMap.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>base-uri</code></th>
+              <td><code>'self'</code></td>
+              <td>Impide que alguien cambie la base de las rutas con una etiqueta <code>base</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row"><code>form-action</code></th>
+              <td><code>'self'</code></td>
+              <td>El formulario solo puede enviarse al propio sitio.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        La directiva <code>frame-ancestors</code>, que decide qué sitios pueden
+        incrustar mi página en un <code>iframe</code>, no funciona dentro de una
+        etiqueta <code>meta</code>: solo vale como cabecera HTTP que configura
+        el servidor. GitHub Pages no permite configurar cabeceras, así que en
+        mi sitio esa protección contra el <em>clickjacking</em> no está activa.
+        Saber qué protección no tengo es parte de la revisión.
+      </p>
+    </section>
+
+    <section id="verificacion">
+      <h2>Lista de verificación</h2>
+
+      <div tabindex="0" role="region" aria-labelledby="cap-verificacion">
+        <table>
+          <caption id="cap-verificacion">Comprobaciones en las siete páginas</caption>
+          <thead>
+            <tr>
+              <th scope="col">Comprobación</th>
+              <th scope="col">Resultado</th>
+              <th scope="col">Observación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Validan sin errores en validator.w3.org</th>
+              <td>Pendiente</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Un solo <code>h1</code> y jerarquía sin saltos</th>
+              <td>Pendiente</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row"><code>alt</code> en las imágenes y <code>title</code> en los <code>iframe</code></th>
+              <td>Cumple</td>
+              <td>En la guía de componentes, las imágenes llevan <code>alt</code> y los dos <code>iframe</code> llevan
+                <code>title</code>.
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Cada control con <code>label</code> y <code>name</code></th>
+              <td>Pendiente</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Tablas con <code>caption</code> y <code>scope</code></th>
+              <td>Cumple</td>
+              <td>Las dos tablas de este informe llevan <code>caption</code> y <code>scope</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row">Enlaces a otra pestaña con <code>rel="noopener noreferrer"</code></th>
+              <td>Cumple</td>
+              <td>El enlace externo de la guía de componentes lleva <code>rel="noopener noreferrer"</code>.</td>
+            </tr>
+            <tr>
+              <th scope="row">Recorrido completo con el teclado y foco visible</th>
+              <td>Pendiente</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Nombres en minúsculas y rutas que funcionan publicadas</th>
+              <td>Pendiente</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row">Consola sin errores de la política</th>
+              <td>Cumple</td>
+              <td>En la página publicada la consola no muestra ningún recurso bloqueado. El aviso de Live Server solo
+                aparece en local.</td>
+            </tr>
+            <tr>
+              <th scope="row">Accesibilidad en Lighthouse</th>
+              <td>Cumple</td>
+              <td>La guía de componentes obtuvo 100. Subió al ponerle <code>aria-label</code> al <code>object</code> del
+                PDF.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="validacion-cliente">
+      <h2>La validación del navegador no protege</h2>
+
+      <p>
+        En el formulario de cita, con el correo vacío, el navegador no me dejó
+        enviarlo. Después abrí las herramientas de desarrollo, borré el atributo
+        <code>required</code> del campo del correo y lo envié: el formulario
+        salió sin ese dato. Hice lo mismo con el campo <code>hidden</code>,
+        cambié su <code>value</code> y viajó el valor alterado. Concluyo que
+        <code>required</code>, <code>pattern</code>, <code>min</code> y
+        <code>type="email"</code> ayudan a quien llena el formulario, pero no
+        impiden nada a quien quiere enviar otra cosa. La validación que protege
+        los datos se hace en el servidor.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <address>
+      <strong>Clínica Veterinaria ConSentidos</strong><br>
+      Avenida Central, Santiago de Veraguas, Panamá<br>
+      <a href="tel:+50799800000">+507 998-0000</a> |
+      <a href="mailto:citas@consentidos.example">citas@consentidos.example</a>
+    </address>
+
+    <p>
+      Última actualización:
+      <time datetime="2026-11-21">21 de noviembre de 2026</time>.
+    </p>
+
+    <p><a href="#inicio">Volver arriba</a></p>
+
+    <p>
+      <small>
+        &copy; 2026 Clínica Veterinaria ConSentidos. Proyecto académico del
+        curso Desarrollo de Software V, Universidad Tecnológica de Panamá,
+        Centro Regional de Veraguas. Los datos de contacto son ficticios.
+      </small>
+    </p>
+  </footer>
+</body>
+
+</html>
